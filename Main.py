@@ -1,40 +1,51 @@
 # Importing the random library to generate random HP damage
 import random
-
-# Game Menu
-print("\n( Game Start )")
-print("1. Fight \n2. Exit")
-# Getting user's input to use in condition
-user_input = input ("> ")
 # Starting HP for the enemy
 enemy_hp = 25
 # Starting HP for the player
 player_hp = 20
+# Game Menu
+print("\n( Game Start )")
 
-# Keep the game running until the player exits
+
 while True:
-    if user_input == "1":
-        attack_choice = input("Attack the Goblin \n send '1'  ")
-        if attack_choice == "1":
-            enemy_hp -= 5
-            print(f"Goblin HP: {enemy_hp}")
-            print("Goblin attacks back!")
-            player_hp -= 5
-            print(f"Your HP: {player_hp}")
 
-        else:
-            print("You've lost!")
-            break
+    print("\n1. Fight \n2. Exit")
+    user_input = input ("> ")
 
-        if player_hp <= 0:
-            print("Goblin Wins!")
-            break
+    # Input
+    if user_input == "1":  
 
+        # Player attack
+        player_damage = random.randint(3, 7)
+        enemy_hp -= player_damage
+        print(f"\nYou hit Goblin for {player_damage} damage")
+        print(f"Goblin HP: {enemy_hp}")
+
+        # Check if the player's won
         if enemy_hp <= 0:
-            print("You've defeated Goblin!")
+            print("\nYou've defeated Goblin!")
             break
     
+        # Enemy attack
+        enemy_damage = random.randint(3, 7)
+        player_hp -= enemy_damage
+        print(f"\nGoblin hits for {enemy_damage} damage")
+        print(f"Player HP: {player_hp}")
+
+        # Check if the Goblin's won
+        if player_hp <= 0:
+            print("\nGoblin Wins!")
+            break
+
     elif user_input == "2":
         print("Bye bye :)")
         break
+
+    # Anything other than '1' causes the player to lose
+    else:
+        print("\nYou've lost!")
+        break
+
+
 
