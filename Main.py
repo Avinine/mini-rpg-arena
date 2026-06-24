@@ -7,14 +7,21 @@ player_hp = 20
 # Game Menu
 print("\n( Game Start )")
 
+print("\n1. Start Game \n2. Exit")
+player_input = input ("> ")
+
+if player_input == "2":
+    print("Bye bye :)")
 
 while True:
 
-    print("\n1. Fight \n2. Exit")
-    user_input = input ("> ")
+    print("\n1. Attack")
+    print("2. Heal")
+    print("3. Exit To Game Menu")
+    player_choice = input ("> ")
 
     # Input
-    if user_input == "1":  
+    if player_choice == "1":  
 
         # Player attack
         player_damage = random.randint(3, 7)
@@ -33,14 +40,16 @@ while True:
         print(f"\nGoblin hits for {enemy_damage} damage")
         print(f"Player HP: {player_hp}")
 
-        # Check if the Goblin's won
+    # Check if the Goblin's won
         if player_hp <= 0:
             print("\nGoblin Wins!")
             break
 
-    elif user_input == "2":
-        print("Bye bye :)")
-        break
+    elif player_choice == "2":
+        pass
+
+    elif player_choice == '3':
+        pass
 
     # Anything other than '1' causes the player to lose
     else:
